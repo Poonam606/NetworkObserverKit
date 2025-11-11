@@ -17,6 +17,17 @@ It’s designed with **SwiftUI** in mind and provides a clean **environment-base
 
 ---
 
+📦 Requirements
+Platform	Minimum Version
+macOS	15.6.1
+Swift	6.2
+Xcode	26.0.1 
+
+🧰 Technologies Used
+Swift 6.2
+SwiftUI
+Network.framework (NWPathMonitor)
+
 ## 🧩 Installation
 
 ### Using Swift Package Manager (SPM)
@@ -62,13 +73,24 @@ struct ContentView: View {
     }
 }
 
-📦 Requirements
-Platform	Minimum Version
-macOS	15.6.1
-Swift	6.2
-Xcode	26.0.1 
+### 4.Using in ViewModel (MVVM Architecture)
+@MainActor
+final class PostViewModel: ObservableObject {
+    private let network: NetWorkObserver
 
-🧰 Technologies Used
-Swift 6.2
-SwiftUI
-Network.framework (NWPathMonitor)
+   init(network: NetWorkObserver) {
+        self.network = network
+    }
+
+  func fetchPosts() async {
+        guard network.isConnected else {
+            print("⚠️ No Internet Connection")
+            return
+        }
+
+      // Proceed with your API call here
+        print("✅ Fetching posts...")
+   }
+}
+
+
