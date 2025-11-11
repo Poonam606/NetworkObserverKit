@@ -5,7 +5,7 @@ import Network
 
 @MainActor
 @Observable
-class NetWorkObserver {
+public class NetWorkObserver {
     private var networkMonitor = NWPathMonitor()
     private var workerQueue = DispatchQueue(label: "NetworkObserver")
     var isConnected = false
@@ -26,7 +26,7 @@ private struct NetworkObserverKey: @MainActor EnvironmentKey {
 }
 
 @MainActor
-extension EnvironmentValues {
+public extension EnvironmentValues {
     var network: NetWorkObserver {
         get { self[NetworkObserverKey.self] }
         set { self[NetworkObserverKey.self] = newValue }
@@ -34,7 +34,7 @@ extension EnvironmentValues {
 }
 
 // ✅ View extension
-extension View {
+public extension View {
     func listenToNetwork() -> some View {
         environment(\.network, NetWorkObserver())
     }
