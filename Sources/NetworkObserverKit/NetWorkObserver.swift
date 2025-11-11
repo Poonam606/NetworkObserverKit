@@ -8,7 +8,7 @@ import Network
 public class NetWorkObserver {
     private var networkMonitor = NWPathMonitor()
     private var workerQueue = DispatchQueue(label: "NetworkObserver")
-    var isConnected = false
+    public private(set) var isConnected = false
     init() {
         networkMonitor.pathUpdateHandler = { [weak self] path in
             DispatchQueue.main.async {
