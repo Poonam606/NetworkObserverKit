@@ -66,7 +66,7 @@ struct ContentView: View {
 Platform	Minimum Version
 iOS	15.0
 macOS	12.0
-Swift	5.9
+Swift	6.2
 Xcode	15.0
 
 🧰 Technologies Used
